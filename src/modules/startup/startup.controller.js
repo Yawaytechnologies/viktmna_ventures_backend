@@ -4,9 +4,9 @@ import { slabConfig } from "../../config/slab_config.js";
 
 export const createStartupController = async (req, res) => {
     try{
-        const {startupName, website_link, address, year_founded, entity_type, sector, founder_name, founder_email, mobile_number, linkedin_profile, problem_statement, solution_overview, current_stage, traction_metrics, capital_raised_so_far, capital_you_are_looking_for, slab, logo} = req.body;
+        const {startupName, website_link, address, year_founded, entity_type, sector, founder_name, founder_email, mobile_number, linkedin_profile, problem_statement, solution_overview, current_stage, traction_metrics, capital_raised_so_far, capital_you_are_looking_for, slab, logo} = req.body || {};
 
-        const logoBase64 = logo;
+        let logoBase64 = logo;
          if (req.file) {
              logoBase64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`;
           }
@@ -41,7 +41,9 @@ export const createStartupController = async (req, res) => {
             capital_raised_so_far,
             capital_you_are_looking_for,
             slab: slabValue,
-            slabDetails: selectedSlab
+            slabDetails: selectedSlab,
+            logo: logoBase64,
+
         });
         res.status(201).json(startup);
     } catch (error) {
