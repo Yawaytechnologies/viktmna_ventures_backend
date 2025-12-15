@@ -4,7 +4,7 @@ import { slabConfig } from "../../config/slab_config.js";
 
 export const createStartupController = async (req, res) => {
     try{
-        const {startuName, website_link, address, year_founded, entity_type, sector, founder_name, founder_email, mobile_number, linkedin_profile, problem_statement, solution_overview, current_stage, traction_metrics, capital_raised_so_far, capital_you_are_looking_for, slab, logo} = req.body;
+        const {startupName, website_link, address, year_founded, entity_type, sector, founder_name, founder_email, mobile_number, linkedin_profile, problem_statement, solution_overview, current_stage, traction_metrics, capital_raised_so_far, capital_you_are_looking_for, slab, logo} = req.body;
 
         const logoBase64 = logo;
          if (req.file) {
@@ -24,7 +24,7 @@ export const createStartupController = async (req, res) => {
         }
 
         const startup = await createStartup({
-            startuName,
+            startupName,
             website_link,
             address,
             year_founded,
