@@ -11,7 +11,7 @@ export const getAllInvestors = async () => {
 }
 
 export const getInvestorById = async (id) => {
-    return await Investor.findById(id);
+    return await Investor.findById(id).lean();
 }
 
 
