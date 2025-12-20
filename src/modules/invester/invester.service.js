@@ -1,6 +1,7 @@
 import Investor from "./invester.model.js";
 
-export const createInvestor = async (investorData) => {
+export const 
+createInvestor = async (investorData) => {
     const investor = new Investor(investorData);
     return await investor.save();
 }
