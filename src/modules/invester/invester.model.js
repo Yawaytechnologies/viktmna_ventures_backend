@@ -15,6 +15,7 @@ const investorSchema = new mongoose.Schema({
     preferredStage:{type: String, required:true, enum:['pre-seed/idea','seed/early','series A/B','growth stage']},
     sectorsOfInterest:{type:String, required:true},
     logo:{type:String},
+    document:{type:String},
     slab:{type:String, required:true, enum:['micro','small','medium','large']},
     slabDetails:{
         range:{type:String},
