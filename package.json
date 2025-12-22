@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/Yawaytechnologies/viktmna_ventures_backend#readme",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.954.0",
+    "@aws-sdk/s3-request-presigner": "^3.955.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
