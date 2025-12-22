@@ -11,7 +11,11 @@ import {
   mobileNumberValidator,
 } from "./invester.validation.js";
 import { slabConfig } from "../../config/slab_config.js";
-import { uploadFileToS3,generatePresignedUrl,deleteFileFromS3 } from "../storage/s3.service.js";
+import {
+  uploadFileToS3,
+  generatePresignedUrl,
+  deleteFileFromS3,
+} from "../storage/s3.service.js";
 import upload from "../../middlewares/multer.js";
 
 export const createInvestorController = async (req, res) => {
@@ -40,7 +44,6 @@ export const createInvestorController = async (req, res) => {
         imageFile.mimetype
       };base64,${imageFile.buffer.toString("base64")}`;
     }
-    
 
     let slabValue = slab || "micro";
     const selectedSlab = slabConfig[slabValue];
@@ -112,6 +115,11 @@ export const getInvestorByIdController = async (req, res) => {
 export const deleteInvestorController = async (req, res) => {
   try {
     const { id } = req.params;
+    const investor = await getInvestorById(id);
+    if (!investor) {
+      return res.status(404).json({ message: "Investor not found" });
+    }
+    await deleteFileFromS3(investor.document);
     const deletedInvestor = await deleteInvestor(id);
     if (!deletedInvestor) {
       return res.status(404).json({ message: "Investor not found" });
