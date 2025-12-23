@@ -1,12 +1,11 @@
 import express from "express";
-import multer from "multer";
 import { createStartupController, getAllStartupsController, getStartupByIdController, deleteStartupController } from "./startup.controller.js";
-
+import upload from "../../middlewares/multer.js";
 const router = express.Router();
 
-const upload = multer({ storage: multer.memoryStorage() });
 
-router.post("/", upload.single("logo"), createStartupController);
+
+router.post("/", upload, createStartupController);
 router.get("/", getAllStartupsController);
 router.get("/:id", getStartupByIdController);
 router.delete("/:id", deleteStartupController);

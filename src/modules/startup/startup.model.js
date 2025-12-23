@@ -22,7 +22,8 @@ const startupSchema = new mongoose.Schema({
         range:{type:String},
         payment:{type:String}
     },
-    logo:{type:String}
+    logo:{type:String},
+    document:{type:String}
 },{timestamps:true
     
 })
