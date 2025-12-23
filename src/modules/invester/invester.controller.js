@@ -16,7 +16,6 @@ import {
   generatePresignedUrl,
   deleteFileFromS3,
 } from "../storage/s3.service.js";
-import upload from "../../middlewares/multer.js";
 
 export const createInvestorController = async (req, res) => {
   try {
@@ -66,7 +65,8 @@ export const createInvestorController = async (req, res) => {
     if (!mobileNumberValidator(mobileNumber)) {
       return res.status(400).json({ message: "Invalid mobile number format" });
     }
-    let documents = await uploadFileToS3(docFile.buffer, docFile.mimetype);
+    const documents = await uploadFileToS3(docFile.buffer, docFile.mimetype);
+
     const investor = await createInvestor({
       fullName,
       email,
