@@ -11,7 +11,7 @@ export const getAllStartups = async () => {
 }
 
 export const getStartupById = async (id) => {
-    return await Startup.findById(id);
+    return await Startup.findById(id).lean();
 }
 
 export const deleteStartup = async (id) => {
