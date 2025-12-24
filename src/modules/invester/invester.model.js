@@ -12,7 +12,12 @@ const investorSchema = new mongoose.Schema({
     pincode:{type: String, required:true},
     panNumber:{type: String, required:true, unique:true},
     investorType:{type: String, required:true, enum:['individual investor','HNI/ultra HNI','family office','institutional/fund','coparate statagic']},
-    preferredStage:{type: String, required:true, enum:['pre-seed/idea','seed/early','series A/B','growth stage']},
+    preferredStage:{type: String, required:true, enum:[
+    'Seed Funding',
+    'Startup Funding',
+    'Early-Stage Funding',
+    'Expansion-Stage Funding',
+  ]},
     sectorsOfInterest:{type:String, required:true},
     logo:{type:String},
     document:{type:String},
