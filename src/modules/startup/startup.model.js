@@ -13,7 +13,7 @@ const startupSchema = new mongoose.Schema({
     linkedin_profile:{type:String},
     problem_statement:{type:String, required:true},
     solution_overview:{type:String, required:true},
-    current_stage:{type:String, required:true, enum:['idea/pre-MVP','MVP in market','early revenue','scaling/growth']},
+    current_stage:{type:String, required:true, enum:[ 'Seed Funding','Startup Funding','Early-Stage Funding','Expansion-Stage Funding']},
     traction_metrics:{type:String},
     capital_raised_so_far:{type:String},
     capital_you_are_looking_for:{type:String, required:true},
